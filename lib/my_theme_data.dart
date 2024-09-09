@@ -55,7 +55,7 @@ class MyThemeData {
           backgroundColor: Colors.transparent,
           elevation: 0,
           titleTextStyle: GoogleFonts.elMessiri(
-              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold,),),
 
       dividerTheme:const DividerThemeData(color: yellowColor, thickness: 3),
       textTheme: TextTheme(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_c11_str/hadeth_details.dart';
 import 'package:islami_c11_str/home/home.dart';
@@ -14,6 +15,7 @@ void main() async {
 
   await SharedPrefrenceHelper.init();
   // await SecureStorage.init();
+  await EasyLocalization.ensureInitialized();
 
   // Fetch the saved theme mode
   String? savedThemeMode = await SharedPrefrenceHelper.getData(key: CachedKeys.currentThemeMode);
@@ -28,8 +30,13 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (context) => MyProvider()..mode = initialThemeMode,
-      child: MyApp(),
+      child: EasyLocalization(
+          supportedLocales: [Locale('en'), Locale('ar')],
+          path: 'assets/locales',
+          saveLocale: true,
+          child: MyApp()),
     ),
+
   );
 }
 
@@ -44,6 +51,9 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<MyProvider>(context);
 
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       initialRoute: HomeScreen.routeName,
       themeMode: provider.mode,
       theme: MyThemeData.lightTheme,

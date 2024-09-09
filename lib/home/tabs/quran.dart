@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_c11_str/app_strings/app_strings.dart';
+import 'package:islami_c11_str/home/bottom_sheet/theme_bottom_sheet.dart';
 import 'package:islami_c11_str/sura_details.dart';
 import 'package:islami_c11_str/sura_model.dart';
 
@@ -134,7 +137,7 @@ class QuranTab extends StatelessWidget {
         ),
         Divider(),
         Text(
-          "Sura Names",
+          AppStrings.suraName.tr(),
           style:
               Theme.of(context).textTheme.bodyMedium),
         Divider(),

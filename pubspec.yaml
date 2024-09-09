@@ -40,6 +40,7 @@ dependencies:
   provider:
   shared_preferences:
   flutter_secure_storage:
+  easy_localization:
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
   assets:
     - assets/images/
     - assets/files/
+    - assets/locales/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
