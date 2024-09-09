@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:islami_c11_str/app_strings/app_strings.dart';
 import 'package:islami_c11_str/my_theme_data.dart';
 import 'package:islami_c11_str/providers/my_provider.dart';
 import 'package:provider/provider.dart';
@@ -13,44 +15,49 @@ class LanguageBottomSheeet extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Arabic',
-                style: themeProvider.mode == ThemeMode.dark
-                    ? Theme.of(context)
+          InkWell(
+            onTap: ()
+            {
+              context.setLocale(Locale("ar"));
+              Navigator.pop(context);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.arabic.tr(),
+                    style: context.locale == Locale("ar")
+                        ? Theme.of(context)
                         .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Colors.black)
-                    : Theme.of(context).textTheme.bodySmall,
-              ),
-              // Icon(
-              //   Icons.check,
-              //   color: MyThemeData.primaryColor,
-              // ),
-            ],
+                        .bodyMedium
+                        ?.copyWith(color: MyThemeData.primaryColor)
+                        : Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.black,)),
+                context.locale == Locale("ar") ? Icon(Icons.done,color: MyThemeData.primaryColor,) : SizedBox()
+              ],
+            ),
           ),
           SizedBox(
             height: 25,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'English',
-                style: themeProvider.mode == ThemeMode.dark
-                    ? Theme.of(context)
+          InkWell(
+            onTap: () {
+              context.setLocale(Locale("en"));
+              Navigator.pop(context);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.english.tr(),
+                    style: context.locale == Locale("en")
+                        ? Theme.of(context)
                         .textTheme
-                        .bodySmall
-                        ?.copyWith(color: MyThemeData.primaryDarkColor)
-                    : Theme.of(context).textTheme.bodySmall,
-              ),
-              Icon(
-                Icons.check,
-                color: MyThemeData.primaryColor,
-              ),
-            ],
+                        .bodyMedium
+                        ?.copyWith(color: MyThemeData.primaryColor)
+                        : Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.black,)),
+                context.locale == Locale("en") ? Icon(Icons.done,color: MyThemeData.primaryColor,) : SizedBox()
+              ],
+            ),
           ),
         ],
       ),

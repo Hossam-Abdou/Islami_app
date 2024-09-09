@@ -1,10 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_c11_str/app_strings/app_strings.dart';
 import 'package:islami_c11_str/home/tabs/ahadeth.dart';
 import 'package:islami_c11_str/home/tabs/quran.dart';
 import 'package:islami_c11_str/home/tabs/radio.dart';
 import 'package:islami_c11_str/home/tabs/sebha.dart';
 import 'package:islami_c11_str/home/tabs/settings.dart';
+import 'package:islami_c11_str/main.dart';
 import 'package:islami_c11_str/providers/my_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -29,12 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
             image: AssetImage(
               provider.mode == ThemeMode.light ? "assets/images/main_bg.png":"assets/images/dark_bg.png",
             ),
-            fit: BoxFit.cover),
+            fit: BoxFit.cover,),
       ),
       child: Scaffold(
         appBar: AppBar(
           title:  Text(
-            "Islami",
+            AppStrings.islami.tr(),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(

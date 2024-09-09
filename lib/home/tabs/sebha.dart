@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islami_c11_str/app_strings/app_strings.dart';
+import 'package:islami_c11_str/home/bottom_sheet/language_bottom_sheeet.dart';
 import 'package:islami_c11_str/my_theme_data.dart';
 import 'package:islami_c11_str/providers/my_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +37,7 @@ class _SebhaScreenState extends State<SebhaTab> {
               height: 41,
             ),
             Text(
-              'عدد التسبيحات',
+              AppStrings.praisesCountNumber.tr(),
               style: Theme.of(context).textTheme.bodySmall,
             ),
             Container(

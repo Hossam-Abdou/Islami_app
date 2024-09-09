@@ -1,9 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_c11_str/app_strings/app_strings.dart';
 import 'package:islami_c11_str/hadeth_details.dart';
 import 'package:islami_c11_str/hadeth_model.dart';
+import 'package:islami_c11_str/home/bottom_sheet/language_bottom_sheeet.dart';
+import 'package:islami_c11_str/my_theme_data.dart';
+import 'package:islami_c11_str/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class AhadethTab extends StatefulWidget {
   AhadethTab({super.key});
@@ -17,6 +23,8 @@ class _AhadethTabState extends State<AhadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
+
     if (allAhadeth.isEmpty) {
       loadHadethFile();
     }
@@ -29,11 +37,9 @@ class _AhadethTabState extends State<AhadethTab> {
         ),
         Divider(),
         Text(
-          "Ahadeth",
+          AppStrings.ahadeth.tr(),
           textAlign: TextAlign.center,
-          style: GoogleFonts.elMessiri(
-            fontSize: 25,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         Divider(),
         Expanded(
@@ -50,9 +56,7 @@ class _AhadethTabState extends State<AhadethTab> {
                 child: Text(
                   allAhadeth[index].title,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.elMessiri(
-                    fontSize: 20,
-                  ),
+                  style:  Theme.of(context).textTheme.bodyMedium?.copyWith(color:provider.mode==ThemeMode.dark? Colors.white:Colors.black),
                 ),
               );
             },
@@ -63,16 +67,6 @@ class _AhadethTabState extends State<AhadethTab> {
     );
   }
 
-  // trim()
-  String x = "Mohamed";
-
-  String x1 = "   Mohamed   ";
-
-  String x2 = "Mohamed   ";
-
-  String x3 = "    Mohamed";
-
-  String x4 = "Moha  med";
 
   loadHadethFile() {
     rootBundle.loadString("assets/files/ahadeth.txt").then((value) {

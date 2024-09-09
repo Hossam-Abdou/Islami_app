@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:islami_c11_str/app_strings/app_strings.dart';
 import 'package:islami_c11_str/my_theme_data.dart';
 import 'package:islami_c11_str/providers/my_provider.dart';
 import 'package:islami_c11_str/services/shared_prefrence/cached_keys.dart';
@@ -26,7 +28,7 @@ class ThemeBottomSheet extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Light',
+                  AppStrings.light.tr(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: themeProvider.mode == ThemeMode.light
                           ? MyThemeData.primaryColor
@@ -53,7 +55,7 @@ class ThemeBottomSheet extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Dark',
+                  AppStrings.dark.tr(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: themeProvider.mode == ThemeMode.dark
                           ? MyThemeData.primaryColor

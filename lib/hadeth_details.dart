@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_c11_str/hadeth_model.dart';
+import 'package:islami_c11_str/my_theme_data.dart';
+import 'package:islami_c11_str/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
   static const String routeName = "HadethDetails";
@@ -9,11 +12,15 @@ class HadethDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
+
     var model = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
       decoration: BoxDecoration(
           image:
-              DecorationImage(image: AssetImage("assets/images/main_bg.png"))),
+              DecorationImage(image: AssetImage(
+                provider.mode == ThemeMode.light ? "assets/images/main_bg.png":"assets/images/dark_bg.png",
+              ),)),
       child: Scaffold(
 
         appBar: AppBar(
@@ -31,10 +38,7 @@ class HadethDetailsScreen extends StatelessWidget {
                   model.content[index],
                   textAlign: TextAlign.center,
                   textDirection: TextDirection.rtl,
-                  style: GoogleFonts.elMessiri(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color:provider.mode==ThemeMode.dark? MyThemeData.primaryColor:Colors.black),
                 );
               },
               itemCount: model.content.length,
